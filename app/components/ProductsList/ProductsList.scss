@@ -1,0 +1,10 @@
+.products-list {
+  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  li {
+    flex: 0 1 20%;
+  }
+}
