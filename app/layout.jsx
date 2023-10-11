@@ -1,6 +1,6 @@
+import Header from "./components/Header/Header";
 import TnastackProvider from "./components/providers/TanstackProvider";
 import "./index.scss";
-import Link from "next/link";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,18 +13,7 @@ export default function RootLayout({ children }) {
       <body>
         <TnastackProvider>
           <div className="wrapper">
-            <header>
-              <div className="container">
-                <div>
-                  <Link href="/">Logo</Link>
-                </div>
-                <ul>
-                  <li>
-                    <Link href="/shop">Shop</Link>
-                  </li>
-                </ul>
-              </div>
-            </header>
+            <Header />
             {children}
             <footer>
               <div className="container">Footer</div>

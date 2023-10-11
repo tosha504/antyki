@@ -23,10 +23,11 @@ const CustomPagination = ({ headers }) => {
     setPage(value);
     router.push(pathname + "?" + createQueryString("page", value));
   };
-  useEffect(() => {
-    //After the component is mounted set router event handlers
-    setPage(1);
-  }, []);
+  // useEffect(() => {
+  //   //After the component is mounted set router event handlers
+  //   setPage(page);
+  //   console.log(1);
+  // }, []);
   return (
     <>
       {intHeaders > 1 && (

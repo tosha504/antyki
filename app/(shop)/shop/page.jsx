@@ -1,8 +1,12 @@
-import { fetchProductList } from "../../store/api";
+import { fetchProductList } from "../../../store/api";
 import { Suspense } from "react";
-import ProductsList from "../components/ProductsList/ProductsList";
-import CustomPagination from "../components/CustomPagination";
-
+import ProductsList from "../../components/ShopPage/ProductsList/ProductsList";
+import CustomPagination from "../../components/CustomPagination";
+export const metadata = {
+  title: {
+    default: "Sklep",
+  },
+};
 const Products = async ({ params, searchParams }) => {
   const productsFetch = await fetchProductList(null, searchParams.page);
   return (

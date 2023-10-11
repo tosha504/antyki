@@ -9,7 +9,7 @@ import Link from "next/link";
 const Product = async ({ params }) => {
   const productData = await singleProductData(params.ID);
   const relatedProducts = await relatedProductIds(productData.related_ids);
-  console.log(productData);
+  // console.log(productData);
   return (
     <>
       <PrevPage>Back</PrevPage>
@@ -41,7 +41,7 @@ const Product = async ({ params }) => {
         relatedProducts.map((prod) => (
           <>
             <h3>
-              <Link href={`/shop/product/${prod.id}`}>{prod.name}</Link>
+              <Link href={`/product/${prod.id}`}>{prod.name}</Link>
             </h3>
           </>
         ))}

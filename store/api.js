@@ -87,3 +87,21 @@ export function fetchProductList(currentCategory, page) {
     })
     .catch((erorr) => erorr);
 }
+
+export function fetchProductCurrentCatgoryData(currentCategory) {
+  let params = {
+    consumer_key: consumer_key,
+    consumer_secret: consumer_secret,
+  };
+
+  // console.log(url + "/categories/" + currentCategory, params);
+  return axios
+    .get(url + "/categories/" + currentCategory, {
+      params,
+    })
+
+    .then((res) => {
+      return res;
+    })
+    .catch((erorr) => erorr);
+}

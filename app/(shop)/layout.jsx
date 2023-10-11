@@ -1,16 +1,17 @@
 import { categoriesListNew } from "../../store/api";
-import Categories from "../components/Categories";
+import Categories from "../components/ShopPage/Categories/Categories";
+import PageTitle from "../components/ShopPage/PageTitle/PageTitle";
 import "./shop.scss";
 
-const ShopPageLayout = async ({ children, params }) => {
+const ShopPageLayout = async ({ children }) => {
   const categoriesLis = await categoriesListNew();
-  console.log(params);
   return (
     <>
       <main>
         <div className="container shop">
+          <PageTitle />
           <div className="shop__filter">
-            <Categories categoriesLis={categoriesLis} activeid={256} />
+            <Categories categoriesLis={categoriesLis} />
           </div>
           <div className="shop__products">{children}</div>
         </div>
