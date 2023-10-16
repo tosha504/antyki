@@ -1,14 +1,44 @@
 .category-nav {
+  // position: sticky;
+  // top: 20px;
   li {
     padding: 3px 0;
     a {
       font-size: 14px;
       color: black;
+    }
+  }
+}
+.arrow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  > a {
+    flex: 1 1 94%;
+  }
 
-      &.arrow {
-        display: flex;
-        justify-content: space-between;
+  > span {
+    flex: 1 1 5%;
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer;
       }
+    }
+
+    transition: ease-in-out 0.35s;
+    &.active {
+      transform: rotate(90deg);
+    }
+  }
+
+  ul {
+    flex: 1 1 100%;
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden;
+    &.active {
+      max-height: 100%;
+      transition: max-height 0.25s ease-in;
     }
   }
 }

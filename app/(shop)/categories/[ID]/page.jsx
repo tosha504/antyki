@@ -14,10 +14,17 @@ export async function generateMetadata({ params }) {
 const currentCategory = async ({ params, searchParams }) => {
   const paramID = params.ID && params.ID;
   const productsFetch = await fetchProductList(paramID, searchParams.page);
+  // console.log(productsFetch.config.params.per_page);
   return (
     <>
       <Suspense fallback={<p>Loading products...</p>}>
-        <ProductsList productsFetch={productsFetch} params={params} />
+        <ProductsList
+          productsFetch={productsFetch.data}
+          total={productsFetch.headers["x-wp-total"]}
+          totalPages={productsFetch.headers["x-wp-totalpages"]}
+          page={searchParams.page}
+          perPage={productsFetch.config.params.per_page}
+        />
       </Suspense>
       <CustomPagination headers={productsFetch.headers["x-wp-totalpages"]} />
     </>

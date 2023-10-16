@@ -10,7 +10,7 @@ function PrevPage() {
   };
 
   return (
-    <div>
+    <div className="btn-prev">
       <Button onClick={goBack} variant="contained" size="small">
         BAck to prev page
       </Button>

@@ -36,7 +36,6 @@ const CustomPagination = ({ headers }) => {
           variant="outlined"
           count={intHeaders}
           onChange={handleChange}
-          defaultPage={1}
           page={page}
           color="primary"
         />
