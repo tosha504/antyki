@@ -1,19 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import "./ProductsList.scss";
-const ProductsList = async ({
-  productsFetch,
-  total,
-  totalPages,
-  page,
-  perPage,
-}) => {
+const ProductsList = async ({ productsFetch, total, page, perPage }) => {
   const _currentPage = !page ? 1 : parseInt(page);
-  const currentPage = _currentPage - 1;
-  const num = Math.ceil(parseInt(total) / parseInt(perPage));
-  const from = currentPage * num + 1;
-  console.log(total, from);
-  const to = from + num - 1;
+  const from = (_currentPage - 1) * parseInt(perPage) + 1;
+  const to = Math.min(
+    parseInt(_currentPage) * parseInt(perPage),
+    parseInt(total)
+  );
   return (
     <>
       <p>

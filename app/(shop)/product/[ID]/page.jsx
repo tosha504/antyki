@@ -7,12 +7,13 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import "./product.scss";
-import Button from "@mui/material/Button";
 import ProductsList from "@/app/components/ShopPage/ProductsList/ProductsList";
+import AddToCArt from "@/app/components/SingleProduct/AddToCart";
 
 const Product = async ({ params }) => {
   const productData = await singleProductData(params.ID);
   const relatedProducts = await relatedProductIds(productData.related_ids);
+  console.log(productData.id);
   return (
     <>
       <PrevPage>Back</PrevPage>
@@ -44,9 +45,7 @@ const Product = async ({ params }) => {
               ))}
             </ul>
           )}
-          <Button variant="contained" size="small">
-            Add to cart
-          </Button>
+          <AddToCArt id={productData} />
           {productData.categories.length > 0 && (
             <ul className="product-items__content_meta">
               <li>Kategorie:</li>

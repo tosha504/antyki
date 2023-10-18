@@ -17,8 +17,8 @@ const Products = async ({ params, searchParams }) => {
         <ProductsList
           productsFetch={productsFetch.data}
           total={productsFetch.headers["x-wp-total"]}
-          totalPages={productsFetch.headers["x-wp-totalpages"]}
           page={searchParams.page}
+          perPage={productsFetch.config.params.per_page}
         />
       </Suspense>
       <CustomPagination headers={productsFetch.headers["x-wp-totalpages"]} />

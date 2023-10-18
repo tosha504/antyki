@@ -1,0 +1,18 @@
+.cart-logo {
+  position: relative;
+  a {
+    padding-right: 10px;
+    .cart-quantity {
+      color: #1f232a;
+      font-weight: 600;
+      font-size: 12px;
+      top: -5px;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.35s;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}

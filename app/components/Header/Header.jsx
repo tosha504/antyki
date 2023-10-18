@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Logo from "@/app/assets/img/antykwariat-zakladka-warszawa-logo.svg";
+import User from "@/app/assets/img/user-ant.svg";
 import Image from "next/image";
 import "./Header.scss";
+import CartLogo from "./CartLogo/CartLogo";
 const Header = () => {
   return (
     <header className="header">
@@ -27,8 +29,14 @@ const Header = () => {
         </ul>
 
         <ul className="header__shop-elements">
-          <li>Acc</li>
-          <li>Shop cart</li>
+          <li>
+            <Link href="/user">
+              <Image src={User} width={24} height={24} alt="User" />
+            </Link>
+          </li>
+          <li>
+            <CartLogo />
+          </li>
         </ul>
       </div>
     </header>
