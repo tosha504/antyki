@@ -1,8 +1,8 @@
 import axios from "axios";
-const url = process.env.NEXT_APP_BASE_URL;
+const url = process.env.WORDPRESS_BASE_URL + "/wp-json/wc/v3/products";
 const shippingUrl = "https://fredommaster.pl/shop/wp-json/wc/v3";
-const consumer_key = "ck_287f3f3155ad6df9b741abce1fcb830a1e2a6391";
-const consumer_secret = "cs_2d6cec8fe27ee3cdacb7e843eabe2e14ec68c496";
+const consumer_key = process.env.NEXT_APP_CONSUMER_DATA_KEY;
+const consumer_secret = process.env.NEXT_APP_CONSUMER_DATA_SECRET;
 
 export async function singleProductData(id) {
   try {
@@ -64,6 +64,7 @@ export async function categoriesListNew() {
 }
 
 export function fetchProductList(currentCategory, page) {
+  console.log(url);
   const pageNum = !page ? 1 : page;
   let params = {
     page: pageNum,

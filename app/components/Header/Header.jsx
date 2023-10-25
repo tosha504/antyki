@@ -4,7 +4,17 @@ import User from "@/app/assets/img/user-ant.svg";
 import Image from "next/image";
 import "./Header.scss";
 import CartLogo from "./CartLogo/CartLogo";
+import { useSession, signOut, signIn } from "next-auth/react";
+
 const Header = () => {
+  const session = useSession();
+  console.log(session);
+  const loginData = {
+    username: "test2@gmail.com",
+    password: "q1w2e3",
+
+    redirect: false,
+  };
   return (
     <header className="header">
       <div className="container">
@@ -26,14 +36,35 @@ const Header = () => {
           <li>
             <Link href="/">Link2</Link>
           </li>
+          <li>{session?.data && <Link href="/profile">Profile</Link>}</li>
         </ul>
 
         <ul className="header__shop-elements">
-          <li>
-            <Link href="/user">
+          {session.status !== "unauthenticated" ? (
+            <>
+              Signed in as {session?.data?.user?.name} <br />
+              <button onClick={() => signOut()}>Sign out</button>
+            </>
+          ) : (
+            <>
+              Not signed in <br />
+              <button
+                onClick={() =>
+                  signIn("credentials", {
+                    loginData,
+                    callbackUrl: "http://localhost:3000/profile",
+                  })
+                }
+              >
+                Sign in
+              </button>
+            </>
+          )}
+          {/* <li> */}
+          {/* <Link href="/login">
               <Image src={User} width={24} height={24} alt="User" />
-            </Link>
-          </li>
+            </Link> */}
+          {/* </li> */}
           <li>
             <CartLogo />
           </li>

@@ -15,8 +15,12 @@
     "@tanstack/react-query": "^4.35.3",
     "@tanstack/react-query-devtools": "^4.35.3",
     "axios": "^1.5.1",
+    "crypto-js": "^4.1.1",
     "next": "latest",
+    "next-auth": "^4.24.3",
+    "random-hash": "^4.0.1",
     "react": "latest",
+    "react-auth-kit": "^3.0.0-alpha.15",
     "react-dom": "latest",
     "zustand": "^4.4.3"
   },

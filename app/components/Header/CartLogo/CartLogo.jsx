@@ -8,7 +8,6 @@ import "./CartLogo.scss";
 function CartLogo() {
   const { items } = useCartStore();
   const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
-  console.log(totalQuantity > 0);
   return (
     <div className="cart-logo">
       <Link href="/cart">
