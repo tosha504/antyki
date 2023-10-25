@@ -35,6 +35,7 @@ export const authConfig = {
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
+
       if (user) {
         token.accessToken = user.token;
       }
@@ -54,7 +55,12 @@ export const authConfig = {
     // The maximum age of the NextAuth.js issued JWT in seconds.
 
     maxAge: 4 * 60 * 60,
+    generateSessionToken: () => {
+      return randomUUID?.() ?? randomBytes(32).toString("hex");
+    },
   },
+  secret: process.env.NEXTAUTH_SECRET,
+  useSecureCookies: true,
   // pages: {
   //   signIn: "/signin",
   // },
