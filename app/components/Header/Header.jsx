@@ -9,12 +9,6 @@ import { useSession, signOut, signIn } from "next-auth/react";
 const Header = () => {
   const session = useSession();
   console.log(session);
-  const loginData = {
-    username: "test2@gmail.com",
-    password: "q1w2e3",
-
-    redirect: false,
-  };
   return (
     <header className="header">
       <div className="container">
@@ -42,17 +36,18 @@ const Header = () => {
         <ul className="header__shop-elements">
           {session.status !== "unauthenticated" ? (
             <>
-              Signed in as {session?.data?.user?.name} <br />
-              <button onClick={() => signOut()}>Sign out</button>
+              {session?.data?.user?.name} <br />
+              <button onClick={() => signOut({ callbackUrl: "/" })}>
+                Sign out
+              </button>
             </>
           ) : (
             <>
-              Not signed in <br />
+              <br />
               <button
                 onClick={() =>
                   signIn("credentials", {
-                    loginData,
-                    callbackUrl: "http://localhost:3000/profile",
+                    callbackUrl: "/profile",
                   })
                 }
               >
@@ -60,11 +55,6 @@ const Header = () => {
               </button>
             </>
           )}
-          {/* <li> */}
-          {/* <Link href="/login">
-              <Image src={User} width={24} height={24} alt="User" />
-            </Link> */}
-          {/* </li> */}
           <li>
             <CartLogo />
           </li>

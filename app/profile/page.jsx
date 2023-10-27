@@ -1,21 +1,23 @@
 import { getServerSession } from "next-auth";
 import { authConfig } from "../config/auth";
-import { fetchAllCustomers } from "../api/customers/customers";
 import axios from "axios";
-
+import UpdateFirsName from "../components/UpdateFirsName";
 // Замените 'YOUR_WORDPRESS_API_ENDPOINT' на конечную точку API WordPress,
 // и 'YOUR_AUTH_TOKEN' на ваш токен авторизации.
-const wordpressAPIEndpoint = "https://fredommaster.pl/shop";
-const authToken =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2ZyZWRvbW1hc3Rlci5wbC9zaG9wIiwiaWF0IjoxNjk4MjIyMjEwLCJuYmYiOjE2OTgyMjIyMTAsImV4cCI6MTY5ODgyNzAxMCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiOTMifX19.FmrEhPG9fjLzbdMpUjNbiFfVRfOEDRFS8uRU5TMGCtk";
 
-export async function getProfileData() {
+export async function getProfileData(authToken) {
+  const wordpressAPIEndpoint = "https://fredommaster.pl/shop";
   try {
-    const response = await axios.get(`${wordpressAPIEndpoint}/wp/v2/users/me`, {
-      headers: {
-        Authorization: `Bearer ${authToken}`, // Используйте нужный формат заголовка авторизации
-      },
-    });
+    const response = await axios.get(
+      `${wordpressAPIEndpoint}/wp-json/usercustomer/v1/current_user_data`,
+
+      {
+        next: { revalidate: 3600 },
+        headers: {
+          Authorization: `Bearer ${authToken}`, // Используйте нужный формат заголовка авторизации
+        },
+      }
+    );
 
     if (response.status === 200) {
       // Данные профиля доступны в response.data
@@ -30,14 +32,22 @@ export async function getProfileData() {
 
 export default async function Profile() {
   const session = await getServerSession(authConfig);
-  const customers = await getProfileData();
-  console.log(session);
+  const accessToken = session.user.accessToken;
+  // console.log(session.user.accessToken);
+  const customers = await getProfileData(accessToken);
   // console.log(customers);
 
+  // console.log(accessToken);
   return (
     <>
       <main>
-        <div className="container">Profile of {session?.user?.name}</div>
+        <div className="container">
+          Profile of
+          {customers?.data.data.first_name + " / " + customers.data.data.email}
+          <br />
+          leng {customers.data.data.first_name.length}
+          <UpdateFirsName accessToken={accessToken} />
+        </div>
       </main>
       ;
     </>

@@ -55,12 +55,8 @@ export const authConfig = {
     // The maximum age of the NextAuth.js issued JWT in seconds.
 
     maxAge: 4 * 60 * 60,
-    generateSessionToken: () => {
-      return randomUUID?.() ?? randomBytes(32).toString("hex");
-    },
   },
-  secret: process.env.NEXTAUTH_SECRET,
-  useSecureCookies: true,
+  // secret: process.env.NEXTAUTH_SECRET,
   // pages: {
   //   signIn: "/signin",
   // },
