@@ -1,3 +1,4 @@
+import RegisterCustomer from "../components/Auth/Register";
 import LabTabs from "../components/Auth/Tabs";
 
 const MyAccount = () => {
@@ -6,7 +7,8 @@ const MyAccount = () => {
       <main>
         <div className="container">
           <h1>My Account</h1>
-          <LabTabs />
+          {/* <LabTabs /> */}
+          <RegisterCustomer />
         </div>
       </main>
     </>

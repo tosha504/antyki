@@ -28,7 +28,7 @@ const Header = () => {
             <Link href="/">Link3</Link>
           </li>
           <li>
-            <Link href="/">Link2</Link>
+            <Link href="/my-account">Account</Link>
           </li>
           <li>{session?.data && <Link href="/profile">Profile</Link>}</li>
         </ul>
@@ -38,21 +38,22 @@ const Header = () => {
             <>
               {session?.data?.user?.name} <br />
               <button onClick={() => signOut({ callbackUrl: "/" })}>
-                Sign out
+                <Image src={User} width={24} height={24} alt="User" />
               </button>
             </>
           ) : (
             <>
-              <br />
-              <button
-                onClick={() =>
-                  signIn("credentials", {
-                    callbackUrl: "/profile",
-                  })
-                }
+              <Link
+                href="/my-account"
+                // onClick={() =>
+                //   signIn("credentials", {
+                //     callbackUrl: "/profile",
+                //   })
+                // }
+                style={{ background: "red" }}
               >
-                Sign in
-              </button>
+                <Image src={User} width={24} height={24} alt="User" />
+              </Link>
             </>
           )}
           <li>

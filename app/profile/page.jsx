@@ -12,7 +12,7 @@ export async function getProfileData(authToken) {
       `${wordpressAPIEndpoint}/wp-json/usercustomer/v1/current_user_data`,
 
       {
-        next: { revalidate: 3600 },
+        next: { revalidate: 0 },
         headers: {
           Authorization: `Bearer ${authToken}`, // Используйте нужный формат заголовка авторизации
         },
@@ -35,7 +35,7 @@ export default async function Profile() {
   const accessToken = session.user.accessToken;
   // console.log(session.user.accessToken);
   const customers = await getProfileData(accessToken);
-  // console.log(customers);
+  console.log(customers);
 
   // console.log(accessToken);
   return (
