@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import PrevPage from "@/app/components/PrevPage";
 import {
   relatedProductIds,
@@ -14,7 +14,6 @@ import AddToCArt from "@/app/components/SingleProduct/AddToCart";
 const Product = async ({ params }) => {
   const productData = await singleProductData(params.ID);
   const relatedProducts = await relatedProductIds(productData.related_ids);
-  // console.log(productData.id);
   return (
     <>
       <PrevPage>Back</PrevPage>

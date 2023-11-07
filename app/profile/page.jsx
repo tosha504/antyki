@@ -40,16 +40,13 @@ export default async function Profile() {
   // console.log(accessToken);
   return (
     <>
-      <main>
-        <div className="container">
-          Profile of
-          {customers?.data.data.first_name + " / " + customers.data.data.email}
-          <br />
-          leng {customers.data.data.first_name.length}
-          <UpdateFirsName accessToken={accessToken} />
-        </div>
-      </main>
-      ;
+      <div className="container">
+        Profile of
+        {customers?.data.data.first_name + " / " + customers.data.data.email}
+        <br />
+        leng {customers.data.data.first_name.length}
+        <UpdateFirsName accessToken={accessToken} />
+      </div>
     </>
   );
 }

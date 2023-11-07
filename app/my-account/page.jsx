@@ -1,14 +1,18 @@
-import RegisterCustomer from "../components/Auth/Register";
+import { Suspense } from "react";
+import RegisterCustomer from "../components/Secure/Register/Register";
+import Loading from "../loading";
+import Login from "../components/Secure/Login/Login";
 
 const MyAccount = () => {
   return (
     <>
-      <main>
-        <div className="container">
+      <div className="container">
+        <Suspense fallback={<Loading />}>
           <h1>My Account</h1>
           <RegisterCustomer />
-        </div>
-      </main>
+          <Login />
+        </Suspense>
+      </div>
     </>
   );
 };
