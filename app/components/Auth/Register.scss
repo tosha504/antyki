@@ -1,8 +1,16 @@
-.form {
+@import "../../inputs.scss";
+
+form {
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
   max-width: 300px;
+}
+
+p {
+  &.error {
+    color: red;
+  }
 }

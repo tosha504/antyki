@@ -23,7 +23,7 @@ export async function fetchAllCustomers() {
     const response = await axios.put(url, { params });
 
     const customers = response;
-
+    console.log(process.env.NEXT_APP_CONSUMER_DATA_SECRET);
     return customers;
   } catch (error) {
     // Handle errors here

@@ -1,3 +1,4 @@
+"use client";
 import PrevPage from "@/app/components/PrevPage";
 import {
   relatedProductIds,

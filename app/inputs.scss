@@ -1,0 +1,14 @@
+@import "./index.scss";
+input[type="email"],
+input[type="password"] {
+  border: none;
+  border-bottom: 1px solid $font;
+  padding: 10px;
+
+  &.error {
+    border-bottom: 1px solid red;
+    &::placeholder {
+      color: red;
+    }
+  }
+}

@@ -3,7 +3,6 @@ import useCartStore from "@/store/useCartStore";
 
 function Cart() {
   const { items, addItem, removeItem, clearCart } = useCartStore();
-  console.log(items);
   return (
     <>
       <main>

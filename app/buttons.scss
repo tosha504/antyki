@@ -1,0 +1,15 @@
+@import "./variables";
+button {
+  &.primary {
+    border: none;
+    padding: 10px;
+    color: $white;
+    text-transform: uppercase;
+    background: $font;
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
