@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import RegisterCustomer from "../components/Secure/Register/Register";
 import Loading from "../loading";
-import Login from "../components/Secure/Login/Login";
+import "./my-account.scss";
+import TabSecure from "../components/Secure/TabSecure/TabSecure";
 
 const MyAccount = () => {
   return (
@@ -9,8 +9,7 @@ const MyAccount = () => {
       <div className="container">
         <Suspense fallback={<Loading />}>
           <h1>My Account</h1>
-          <RegisterCustomer />
-          <Login />
+          <TabSecure />
         </Suspense>
       </div>
     </>

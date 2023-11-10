@@ -43,7 +43,6 @@ const RegisterCustomer = () => {
         const loginData = {
           username: values.email,
           password: values.password,
-
           callbackUrl: "/profile",
           redirect: false,
         };
@@ -60,9 +59,11 @@ const RegisterCustomer = () => {
       }
     },
   });
+  console.log(formik.errors.email, formik.errors.password);
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
+        {new Date().getTime()}
         <div>
           <input
             placeholder="Email"

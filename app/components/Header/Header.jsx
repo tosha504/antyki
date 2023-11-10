@@ -27,31 +27,20 @@ const Header = () => {
           <li>
             <Link href="/">Link3</Link>
           </li>
-          <li>
-            <Link href="/my-account">Account</Link>
-          </li>
-          <li>{session?.data && <Link href="/profile">Profile</Link>}</li>
         </ul>
 
         <ul className="header__shop-elements">
           {session.status !== "unauthenticated" ? (
             <>
               {session?.data?.user?.name} <br />
-              <button onClick={() => signOut({ callbackUrl: "/" })}>
-                <Image src={User} width={24} height={24} alt="User" />
-              </button>
+              <button
+                className="user"
+                onClick={() => signOut({ callbackUrl: "/" })}
+              ></button>
             </>
           ) : (
             <>
-              <Link
-                href="/my-account"
-                // onClick={() =>
-                //   signIn("credentials", {
-                //     callbackUrl: "/profile",
-                //   })
-                // }
-                style={{ background: "red" }}
-              >
+              <Link href="/my-account">
                 <Image src={User} width={24} height={24} alt="User" />
               </Link>
             </>

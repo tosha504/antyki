@@ -57,7 +57,7 @@ export const authConfig = {
     maxAge: 4 * 60 * 60,
   },
   // secret: process.env.NEXTAUTH_SECRET,
-  // pages: {
-  //   signIn: "/signin",
-  // },
+  pages: {
+    signIn: "/my-account",
+  },
 };
