@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
 
 // async function requestLogin(username, password) {
 //   try {
@@ -36,17 +37,17 @@ function Login() {
     const loginData = {
       username: username,
       password: password,
-
       callbackUrl: "/profile",
       redirect: false,
     };
 
-    console.log(loginData);
+    // console.log(loginData);
     const login = await signIn("credentials", loginData);
 
     if (login.ok) {
-      alert("Successfully Logged in! Redirecting...");
-      router.push("/profile");
+      toast.success(`Successfully Logged in! ${loginData.username}`);
+      router.reload();
+      // router.push("/my-account");
     } else {
       alert("Login failed.");
       console.log(login);

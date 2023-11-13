@@ -8,7 +8,7 @@ import { useSession, signOut, signIn } from "next-auth/react";
 
 const Header = () => {
   const session = useSession();
-  console.log(session);
+  // console.log(session);
   return (
     <header className="header">
       <div className="container">
@@ -37,6 +37,9 @@ const Header = () => {
                 className="user"
                 onClick={() => signOut({ callbackUrl: "/" })}
               ></button>
+              <Link href="/my-account">
+                <Image src={User} width={24} height={24} alt="User" />
+              </Link>
             </>
           ) : (
             <>

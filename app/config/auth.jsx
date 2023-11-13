@@ -35,7 +35,6 @@ export const authConfig = {
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
-
       if (user) {
         token.accessToken = user.token;
       }
@@ -56,7 +55,7 @@ export const authConfig = {
 
     maxAge: 4 * 60 * 60,
   },
-  // secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/my-account",
   },

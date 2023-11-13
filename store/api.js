@@ -64,7 +64,6 @@ export async function categoriesListNew() {
 }
 
 export function fetchProductList(currentCategory, page) {
-  console.log(url);
   const pageNum = !page ? 1 : page;
   let params = {
     page: pageNum,
@@ -105,4 +104,29 @@ export function fetchProductCurrentCatgoryData(currentCategory) {
       return res;
     })
     .catch((erorr) => erorr);
+}
+
+export async function getProfileData(authToken) {
+  const wordpressAPIEndpoint = "https://fredommaster.pl/shop";
+  try {
+    const response = await axios.get(
+      `${wordpressAPIEndpoint}/wp-json/usercustomer/v1/current_user_data`,
+
+      {
+        next: { revalidate: 0 },
+        headers: {
+          Authorization: `Bearer ${authToken}`, // Используйте нужный формат заголовка авторизации
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      // Данные профиля доступны в response.data
+      return response;
+    } else {
+      throw new Error("Не удалось получить данные профиля пользователя.");
+    }
+  } catch (error) {
+    throw error;
+  }
 }

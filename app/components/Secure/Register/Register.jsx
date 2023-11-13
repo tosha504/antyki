@@ -59,7 +59,7 @@ const RegisterCustomer = () => {
       }
     },
   });
-  console.log(formik.errors.email, formik.errors.password);
+  // console.log(formik.errors.email, formik.errors.password);
   return (
     <>
       <form onSubmit={formik.handleSubmit}>

@@ -35,7 +35,7 @@ export default async function Profile() {
   const accessToken = session.user.accessToken;
   // console.log(session.user.accessToken);
   const customers = await getProfileData(accessToken);
-  console.log(customers);
+  // console.log(customers);
 
   // console.log(accessToken);
   return (

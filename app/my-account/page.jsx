@@ -1,16 +1,17 @@
-import { Suspense } from "react";
-import Loading from "../loading";
 import "./my-account.scss";
 import TabSecure from "../components/Secure/TabSecure/TabSecure";
+import { authConfig } from "../config/auth";
+import { getServerSession } from "next-auth";
 
-const MyAccount = () => {
+const MyAccount = async () => {
+  const session = await getServerSession(authConfig);
+
   return (
     <>
       <div className="container">
-        <Suspense fallback={<Loading />}>
-          <h1>My Account</h1>
-          <TabSecure />
-        </Suspense>
+        <h1>My Account</h1>
+
+        {!session?.user ? <TabSecure /> : "nie"}
       </div>
     </>
   );
