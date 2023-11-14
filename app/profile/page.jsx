@@ -31,10 +31,10 @@ export async function getProfileData(authToken) {
 }
 
 export default async function Profile() {
-  const session = await getServerSession(authConfig);
-  const accessToken = session.user.accessToken;
-  // console.log(session.user.accessToken);
-  const customers = await getProfileData(accessToken);
+  // const session = await getServerSession(authConfig);
+  // const accessToken = session.user.accessToken;
+  // // console.log(session.user.accessToken);
+  // const customers = await getProfileData(accessToken);
   // console.log(customers);
 
   // console.log(accessToken);
@@ -42,10 +42,10 @@ export default async function Profile() {
     <>
       <div className="container">
         Profile of
-        {customers?.data.data.first_name + " / " + customers.data.data.email}
+        {/* {customers?.data.data.first_name + " / " + customers.data.data.email}
         <br />
         leng {customers.data.data.first_name.length}
-        <UpdateFirsName accessToken={accessToken} />
+        <UpdateFirsName accessToken={accessToken} /> */}
       </div>
     </>
   );

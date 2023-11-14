@@ -22,7 +22,7 @@ export default function UpdateFirsName() {
     updateCustomerData,
     initialState
   );
-  console.log(state);
+  // console.log(state);
   return (
     <div>
       {/* <button onClick={handleUpdate}>Update first name</button> */}
