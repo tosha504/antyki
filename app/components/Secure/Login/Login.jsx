@@ -31,7 +31,6 @@ function Login() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const handlSubmit = async (event) => {
     event.preventDefault();
     const loginData = {
@@ -46,8 +45,8 @@ function Login() {
 
     if (login.ok) {
       toast.success(`Successfully Logged in! ${loginData.username}`);
-      router.reload();
-      // router.push("/my-account");
+      // router.forward("/profile");
+      router.push("/my-account");
     } else {
       alert("Login failed.");
       console.log(login);
