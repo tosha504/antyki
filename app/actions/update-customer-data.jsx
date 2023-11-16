@@ -16,13 +16,12 @@ export async function updateCustomerData(id, formData) {
     first_name: z.string().min(1),
   });
   const data = schema.parse({
-    first_name: formData.get("first_name"),
+    first_name: formData.firstName,
   });
-  console.log(accessToken);
   try {
     // Make the PUT request to update the customer's first name
-    await fetch(
-      `https://fredommaster.pl/shop/wp-json/wc/v3/customers/93/?${queryString}`,
+    const res = await fetch(
+      `https://fredommaster.pl/shop/wp-json/wc/v3/customers/${id}/?${queryString}`,
       {
         method: "PUT",
         headers: {
@@ -32,20 +31,14 @@ export async function updateCustomerData(id, formData) {
         body: JSON.stringify(data),
       }
     );
-    // .then((response) => {
-    //   if (!response.ok) {
-    //     throw new Error("Failed to update customer first name");
-    //   }
-    //   return response.json();
-    // })
-    // .then(() => {
-    //   console.log("Customer first name updated successfully");
-    // });
-    // console.log(data.first_name);
-
     revalidatePath("/");
-    return { message: `Updated  ${data}` };
+
+    if (!res.ok) {
+      const mes = await res.json();
+      return mes;
+    }
+    return { message: "Zmieniono szczegóły konta." };
   } catch (e) {
-    return { message: "Failed to create todo" };
+    return { code: 500, message: "Problem techniczny" };
   }
 }

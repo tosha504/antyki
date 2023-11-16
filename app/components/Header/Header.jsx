@@ -8,7 +8,7 @@ import { useSession, signOut, signIn } from "next-auth/react";
 
 const Header = () => {
   const session = useSession();
-  // console.log(session);
+  console.log(session);
   return (
     <header className="header">
       <div className="container">
