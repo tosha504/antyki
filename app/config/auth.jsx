@@ -49,6 +49,18 @@ export const authConfig = {
 
       return session;
     },
+    async signIn({ user, account, profile, email, credentials }) {
+      const isAllowedToSignIn = true
+      console.log(user);
+      if (isAllowedToSignIn) {
+        return true
+      } else {
+        // Return false to display a default error message
+        return false
+        // Or you can return a URL to redirect to:
+        // return '/unauthorized'
+      }
+    }
   },
   session: {
     // The maximum age of the NextAuth.js issued JWT in seconds.

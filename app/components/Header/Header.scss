@@ -15,10 +15,16 @@
 
   &__nav {
     gap: 20px;
+
     li {
       a {
         font-weight: 600;
         color: black;
+
+        &.acitve {
+          color: red;
+        }
+
         @media (hover: hover) {
           &:hover {
             opacity: 0.65;

@@ -37,7 +37,6 @@ function Login() {
     const loginData = {
       username: username,
       password: password,
-
       callbackUrl: "/profile",
       redirect: false,
     };
@@ -53,17 +52,6 @@ function Login() {
       console.log(login);
     }
   };
-
-  // const handleLogin = async () => {
-  //   try {
-  //     const response = await requestLogin(username, password);
-
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.log(error);
-  //     // Handle network or server errors.
-  //   }
-  // };
 
   return (
     <>

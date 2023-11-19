@@ -1,3 +1,7 @@
+@import url("https://fredommaster.pl/shop/wp-includes/css/dist/block-library/style.min.css?ver=6.4.1");
+@import url("https://fredommaster.pl/shop/wp-content/themes/zakladka/css/custom.css");
+
+
 @import "_variables.scss";
 
 *,
@@ -7,6 +11,7 @@
   margin: 0;
   padding: 0;
 }
+
 html,
 body {
   @include fontz(14px, 2);
@@ -42,11 +47,13 @@ h6 {
 main {
   flex: 1 1 100%;
 }
+
 .container {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
+
   @media (max-width: $bp5) {
     max-width: $width;
   }
@@ -55,9 +62,11 @@ main {
     padding: 0px 15px;
   }
 }
+
 ul {
   list-style: none;
 }
+
 a,
 a:active,
 a:hover {
@@ -65,6 +74,7 @@ a:hover {
   text-decoration: none;
   transition: 0.3s;
 }
+
 button,
 button:active,
 button:focus,
@@ -77,15 +87,18 @@ textarea,
 textarea:focus {
   outline: none;
 }
+
 textarea {
   resize: none;
 }
 
 button {
   transition: 0.35s;
+
   &:hover {
     cursor: pointer;
   }
+
   max-width: 200px;
 }
 

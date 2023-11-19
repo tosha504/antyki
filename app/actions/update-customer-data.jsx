@@ -35,7 +35,8 @@ export async function updateCustomerData(formData) {
       return mes;
     }
     console.log(mes);
-    return { message: "Zmieniono szczegóły konta." };
+    return mes
+    // return { message: "Zmieniono szczegóły konta." };
   } catch (e) {
     return { code: 500, message: "Problem techniczny" };
   }

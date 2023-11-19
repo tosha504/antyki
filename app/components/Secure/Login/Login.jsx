@@ -42,14 +42,14 @@ function Login() {
 
     // console.log(loginData);
     const login = await signIn("credentials", loginData);
+    // console.log(login);
 
     if (login.ok) {
-      toast.success(`Successfully Logged in! ${loginData.username}`);
-      // router.forward("/profile");
-      router.push("/my-account");
+      toast.success(`Witaj ${loginData.username}!`);
+      router.push("/profile");
     } else {
-      alert("Login failed.");
-      console.log(login);
+      toast.error("Błąd uwierzytelnienia.");
+
     }
   };
 

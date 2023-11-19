@@ -6,7 +6,7 @@ export async function GET(request) {
 
   if (path) {
     revalidatePath(path);
-    console.log(path);
+    // console.log(path);
     return NextResponse.json({ revalidated: true, now: Date.now() });
   }
 

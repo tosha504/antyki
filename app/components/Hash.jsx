@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 
 const postData = async () => {
   const hash = generateHash();
-  console.log(hash);
+  // console.log(hash);
   try {
     const data = {
       key: "value",
