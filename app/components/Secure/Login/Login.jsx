@@ -1,31 +1,11 @@
 "use client";
 import { useState } from "react";
-// import handler from "../api/login";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
-
-// async function requestLogin(username, password) {
-//   try {
-//     const response = await axios.post(
-//       "https://fredommaster.pl/shop/wp-json/jwt-auth/v1/token",
-//       {
-//         username,
-//         password,
-//       }
-//     );
-//     if (response.data.token) {
-//       return response.status(200).json({ token: response.data.token });
-//     } else {
-//       return response.status(401).json({ error: "Authentication failed" });
-//     }
-//   } catch (error) {
-//     return { error: "Internal server error" };
-//   }
-// }
 
 function Login() {
   const router = useRouter();
@@ -40,29 +20,16 @@ function Login() {
       redirect: false,
     };
 
-    // console.log(loginData);
+
     const login = await signIn("credentials", loginData);
-    // console.log(login);
 
     if (login.ok) {
       toast.success(`Witaj ${loginData.username}!`);
       router.push("/profile");
     } else {
       toast.error("Błąd uwierzytelnienia.");
-
     }
   };
-
-  // const handleLogin = async () => {
-  //   try {
-  //     const response = await requestLogin(username, password);
-
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.log(error);
-  //     // Handle network or server errors.
-  //   }
-  // };
 
   return (
     <>
