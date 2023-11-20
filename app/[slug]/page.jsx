@@ -13,7 +13,7 @@ export async function singlePage(id) {
 const slug = async ({ params }) => {
 
   const singlPageWodpress = await singlePage(params.slug);
-  console.log(singlPageWodpress);
+  // console.log(singlPageWodpress);
   return (
     <>
       <div className="container">

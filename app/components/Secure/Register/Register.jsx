@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
 
-const RegisterCustomer = () => {
+export default function RegisterCustomer() {
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -32,7 +32,6 @@ const RegisterCustomer = () => {
           <p
             dangerouslySetInnerHTML={{
               __html: data.message,
-              // .replace("#", "/shop")
             }}
           ></p>
         );
@@ -102,4 +101,3 @@ const RegisterCustomer = () => {
   );
 };
 
-export default RegisterCustomer;
