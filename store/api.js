@@ -133,7 +133,10 @@ export async function getProfileData(authToken) {
 
 export async function pages() {
   const getPosts = await fetch(
-    `https://fredommaster.pl/shop/wp-json/custom/v1/pages/`
+    // `https://fredommaster.pl/shop/wp-json/custom/v1/pages/`
+    `https://fredommaster.pl/shop/wp-json/custom-nav/v3/menu`, {
+    method: "POST"
+  }
   );
   const getPostsJ = await getPosts.json();
 

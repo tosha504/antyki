@@ -11,7 +11,7 @@ import { pages } from "@/store/api";
 const Header = async () => {
   const session = await getServerSession(authConfig);
   const pagesWodpress = await pages();
-  console.log(pagesWodpress);
+
   return (
     <header className="header">
       <div className="container">

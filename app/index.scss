@@ -1,6 +1,6 @@
 @import url("https://fredommaster.pl/shop/wp-includes/css/dist/block-library/style.min.css?ver=6.4.1");
-@import url("https://fredommaster.pl/shop/wp-content/themes/zakladka/css/custom.css");
-@import url("https://fredommaster.pl/shop/wp-content/themes/zakladka/css/theme.min.css?ver=1.00.1695890847");
+// @import url("https://fredommaster.pl/shop/wp-content/themes/zakladka/css/custom.css");
+// @import url("https://fredommaster.pl/shop/wp-content/themes/zakladka/css/theme.min.css?ver=1.00.1695890847");
 
 @import "_variables.scss";
 
@@ -14,6 +14,7 @@
 
 html,
 body {
+  scroll-behavior: smooth;
   @include fontz(14px, 2);
   height: 100%;
   width: 100%;
@@ -109,4 +110,45 @@ img {
 
 footer {
   background-color: aquamarine;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  /* width of the scrollbar */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar:hover {
+  background: #ccc;
+  /* color on hover */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* color of the scrollbar handle on hover */
+}
+
+/* Button (arrows) */
+::-webkit-scrollbar-button {
+  display: none;
+  /* hide the scrollbar buttons */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* color of the scrollbar track */
+}
+
+/* Corner */
+::-webkit-scrollbar-corner {
+  background: #fff;
+  /* color of the scrollbar corner */
 }

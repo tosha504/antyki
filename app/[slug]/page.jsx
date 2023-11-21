@@ -1,6 +1,5 @@
 
 export async function singlePage(id) {
-
   const getPosts = await fetch(
     `https://fredommaster.pl/shop/wp-json/custom/v1/page/${id}`,
 
@@ -11,16 +10,16 @@ export async function singlePage(id) {
 }
 
 const slug = async ({ params }) => {
-
-  const singlPageWodpress = await singlePage(params.slug);
-  // console.log(singlPageWodpress);
+  console.log(params);
+  const singlPageWodpress = await singlePage(parseInt(params.slug));
+  console.log(singlPageWodpress);
+  // const content = { __html: singlPageWodpress.content }
   return (
     <>
       <div className="container">
         <h1>{singlPageWodpress.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: singlPageWodpress.content }}>
+        <div dangerouslySetInnerHTML={{ __html: singlPageWodpress.content }} />
 
-        </div>
       </div>
     </>
   )
