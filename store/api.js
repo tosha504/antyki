@@ -130,3 +130,12 @@ export async function getProfileData(authToken) {
     throw error;
   }
 }
+
+export async function pages() {
+  const getPosts = await fetch(
+    `https://fredommaster.pl/shop/wp-json/custom/v1/pages/`
+  );
+  const getPostsJ = await getPosts.json();
+
+  return getPostsJ;
+}
