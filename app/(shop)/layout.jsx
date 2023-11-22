@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { categoriesListNew } from "../../store/api";
 import Categories from "../components/ShopPage/Categories/Categories";
 import PageTitle from "../components/ShopPage/PageTitle/PageTitle";
@@ -13,7 +14,10 @@ const ShopPageLayout = async ({ children }) => {
           <div className="shop__filter">
             <Categories categoriesList={categoriesList} />
           </div>
-          <div className="shop__products">{children}</div>
+          <Suspense fallback={'custom loading'}>
+
+            <div className="shop__products">{children}</div>
+          </Suspense>
         </div>
       </main>
     </>

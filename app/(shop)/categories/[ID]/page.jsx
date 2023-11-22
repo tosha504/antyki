@@ -16,7 +16,7 @@ const currentCategory = async ({ params, searchParams }) => {
   const productsFetch = await fetchProductList(paramID, searchParams.page);
   return (
     <>
-      <Suspense fallback={<p>Loading products...</p>}>
+      <Suspense fallback={<p>Loading products in category...</p>}>
         <ProductsList
           productsFetch={productsFetch.data}
           total={productsFetch.headers["x-wp-total"]}
