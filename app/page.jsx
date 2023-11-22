@@ -1,5 +1,4 @@
-import Head from "next/head";
-import Hash from "./components/Hash";
+
 import { revalidatePath } from "next/cache";
 export async function posts() {
   try {
@@ -18,17 +17,16 @@ export async function posts() {
 
 export default async function Home() {
   const res = await posts();
-  // console.log(res);
+  console.log(res);
   return (
     <>
       <div className="container">
-        {/* <Hash /> */}
         Home
         <h1 className="custom-class">{res?.title?.rendered}</h1>
         <div className="has-hazy-dawn-gradient-background">
           <div
             className="entry-content"
-            dangerouslySetInnerHTML={{ __html: res.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: res?.content?.rendered }}
           />
         </div>
       </div>

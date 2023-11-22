@@ -1,4 +1,4 @@
-// "use client";
+
 import Header from "@/app/components/Header/Header";
 import "./index.scss";
 import { Providers } from "./components/providers/Provider";
