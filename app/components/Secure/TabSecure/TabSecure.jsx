@@ -62,11 +62,9 @@ const TabSecure = () => {
     { label: "Login", content: <Login /> },
   ];
   return (
-    <>
-      <div className="auth-container">
-        <Tabs tabs={tabs} />
-      </div>
-    </>
+    <div className="auth-container">
+      <Tabs tabs={tabs} />
+    </div>
   );
 };
 

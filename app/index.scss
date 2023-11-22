@@ -55,11 +55,11 @@ main {
   margin: 0 auto;
   padding: 0 30px;
 
-  @media (max-width: $bp5) {
+  @media (max-width: map-get($grid-breakpoints, xxl)) {
     max-width: $width;
   }
 
-  @media (max-width: $bp1) {
+  @media (max-width: map-get($grid-breakpoints, xl)) {
     padding: 0px 15px;
   }
 }

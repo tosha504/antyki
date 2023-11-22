@@ -106,39 +106,38 @@ export function fetchProductCurrentCatgoryData(currentCategory) {
     .catch((erorr) => erorr);
 }
 
-export async function getProfileData(authToken) {
-  const wordpressAPIEndpoint = "https://fredommaster.pl/shop";
-  try {
-    const response = await axios.get(
-      `${wordpressAPIEndpoint}/wp-json/usercustomer/v1/current_user_data`,
-
-      {
-        next: { revalidate: 0 },
-        headers: {
-          Authorization: `Bearer ${authToken}`, // Используйте нужный формат заголовка авторизации
-        },
-      }
-    );
-
-    if (response.status === 200) {
-      // Данные профиля доступны в response.data
-      return response;
-    } else {
-      throw new Error("Не удалось получить данные профиля пользователя.");
-    }
-  } catch (error) {
-    throw error;
-  }
-}
-
 export async function pages() {
   const getPosts = await fetch(
     // `https://fredommaster.pl/shop/wp-json/custom/v1/pages/`
-    `https://fredommaster.pl/shop/wp-json/custom-nav/v3/menu`, {
-    method: "POST"
-  }
+    `https://fredommaster.pl/shop/wp-json/custom-nav/v3/menu`,
+    {
+      method: "POST",
+    }
   );
   const getPostsJ = await getPosts.json();
 
   return getPostsJ;
+}
+
+export async function getProfileData(authToken) {
+  try {
+    const response = await fetch(
+      `${process.env.WORDPRESS_BASE_URL}/wp-json/customer/v1/user-data`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    const mes = await response.json();
+    if (!response.ok) {
+      return mes;
+    }
+    return mes;
+  } catch (error) {
+    throw error;
+  }
 }

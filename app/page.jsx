@@ -29,7 +29,7 @@ export default async function Home() {
           <div
             className="entry-content"
             dangerouslySetInnerHTML={{ __html: res.content.rendered }}
-          ></div>
+          />
         </div>
       </div>
     </>

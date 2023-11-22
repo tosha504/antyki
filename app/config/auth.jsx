@@ -18,6 +18,8 @@ export const authConfig = {
           }
         );
         const user = await res.json();
+        console.log(user);
+
         if (user.token) {
           // Any object returned will be saved in `user` property of the JWT
           const loggeinUser = {
@@ -50,15 +52,14 @@ export const authConfig = {
       return session;
     },
     async signIn({ user, account, profile, email, credentials }) {
-
       if (user.token) {
-        return true
+        return true;
       } else {
         // Return false to display a default error message
         console.log(1);
-        return false
+        return false;
       }
-    }
+    },
   },
   session: {
     // The maximum age of the NextAuth.js issued JWT in seconds.

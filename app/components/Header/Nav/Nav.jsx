@@ -9,7 +9,6 @@ const Nav = ({ propsPagesWodpress }) => {
       pathname: "/sklep",
       name: "Sklep",
     },
-
   ];
 
   const extractedIds = propsPagesWodpress.map((element) => element);
@@ -30,7 +29,6 @@ const Nav = ({ propsPagesWodpress }) => {
       <ul className="header__nav">
         {updatedLinks.map((linkData) => (
           <li key={linkData.name}>
-            {console.log(linkData)}
             <Link
               className={currentRoute === linkData.pathname ? "acitve" : ""}
               href={linkData.pathname}

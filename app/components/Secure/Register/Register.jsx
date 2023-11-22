@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import "./Register.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -33,11 +33,10 @@ export default function RegisterCustomer() {
             dangerouslySetInnerHTML={{
               __html: data.message,
             }}
-          ></p>
+          />
         );
         toast.error(text);
       }
-      console.log(values);
       if (!data.message) {
         const loginData = {
           username: values.email,
@@ -46,7 +45,6 @@ export default function RegisterCustomer() {
           redirect: false,
         };
 
-        console.log(loginData);
         const login = await signIn("credentials", loginData);
         if (login.ok) {
           router.push("/profile");
@@ -58,46 +56,34 @@ export default function RegisterCustomer() {
       }
     },
   });
-  // console.log(formik.errors.email, formik.errors.password);
   return (
-    <>
-      <form onSubmit={formik.handleSubmit}>
-        {new Date().getTime()}
-        <div>
-          <input
-            placeholder="Email"
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            className={
-              formik.touched.email && formik.errors.email ? "error" : ""
-            }
-          />
-          {formik.touched.email && formik.errors.email ? (
-            <p className="error">{formik.errors.email}</p>
-          ) : null}
-        </div>
-        <div>
-          <input
-            placeholder="Password"
-            id="password"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            className={
-              formik.touched.password && formik.errors.password ? "error" : ""
-            }
-          />
-          {formik.touched.password && formik.errors.password ? (
-            <p className="error">{formik.errors.password}</p>
-          ) : null}
-        </div>
-        <Button myClass={"primary"} title={"Submit"} />
-      </form>
-    </>
+    <form onSubmit={formik.handleSubmit}>
+      <input
+        placeholder="Email"
+        id="email"
+        name="email"
+        type="email"
+        onChange={formik.handleChange}
+        value={formik.values.email}
+        className={formik.touched.email && formik.errors.email ? "error" : ""}
+      />
+      {formik.touched.email && formik.errors.email ? (
+        <p className="error">{formik.errors.email}</p>
+      ) : null}
+      <input
+        placeholder="Password"
+        name="password"
+        type="password"
+        onChange={formik.handleChange}
+        value={formik.values.password}
+        className={
+          formik.touched.password && formik.errors.password ? "error" : ""
+        }
+      />
+      {formik.touched.password && formik.errors.password ? (
+        <p className="error">{formik.errors.password}</p>
+      ) : null}
+      <Button myClass={"primary"} title={"Submit"} />
+    </form>
   );
-};
-
+}

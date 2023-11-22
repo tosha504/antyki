@@ -20,9 +20,7 @@ function Login() {
       redirect: false,
     };
 
-
     const login = await signIn("credentials", loginData);
-
     if (login.ok) {
       toast.success(`Witaj ${loginData.username}!`);
       router.push("/profile");
@@ -32,40 +30,38 @@ function Login() {
   };
 
   return (
-    <>
-      <Box
-        onSubmit={handlSubmit}
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        {new Date().getTime()}
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue=""
-          placeholder="Email"
-          onChange={(e) => setUsername(e.target.value)}
-          size="small"
-        />
+    <Box
+      onSubmit={handlSubmit}
+      component="form"
+      sx={{
+        "& .MuiTextField-root": { m: 1, width: "25ch" },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      {/* {new Date().getTime()} */}
+      <TextField
+        required
+        id="outlined-required"
+        label="Required"
+        defaultValue=""
+        placeholder="Email"
+        onChange={(e) => setUsername(e.target.value)}
+        size="small"
+      />
 
-        <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          onChange={(e) => setPassword(e.target.value)}
-          size="small"
-        />
-        <Button type="submit" size="large" variant="contained" color="primary">
-          Login
-        </Button>
-      </Box>
-    </>
+      <TextField
+        id="outlined-password-input"
+        label="Password"
+        type="password"
+        autoComplete="current-password"
+        onChange={(e) => setPassword(e.target.value)}
+        size="small"
+      />
+      <Button type="submit" size="large" variant="contained" color="primary">
+        Login
+      </Button>
+    </Box>
   );
 }
 

@@ -10,7 +10,7 @@ const MyAccount = async () => {
     <>
       <div className="container">
         <h1>My Account</h1>
-        {!session?.user ? <TabSecure /> : "nie"}
+        {!session?.user && <TabSecure />}
       </div>
     </>
   );

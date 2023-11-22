@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import arrow from "@/app/assets/img/arrow-right.svg";
-import CustomLink from "./Link";
+import CustomLink from "./CustomLink";
 import { useState } from "react";
 
 export default function CatNavLink({ categoryData }) {

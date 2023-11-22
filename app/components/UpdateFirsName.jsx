@@ -2,7 +2,7 @@
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { authConfig } from "../config/auth";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { updateCustomerData } from "../actions/update-customer-data";
 
 export default function UpdateFirsName({ userId }) {
@@ -37,11 +37,6 @@ export default function UpdateFirsName({ userId }) {
 
   return (
     <div>
-      <button
-        className="user"
-        onClick={() => signOut({ callbackUrl: "/" })}
-      >LOGG OUT</button>
-      {/* <button onClick={handleUpdate}>Update first name</button> */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register("firstName", {
