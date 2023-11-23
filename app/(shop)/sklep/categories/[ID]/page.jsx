@@ -1,6 +1,6 @@
 import ProductsList from "@/app/(shop)/components/ProductsList/ProductsList";
 import CustomPagination from "@/app/components/CustomPagination";
-import { fetchProductList, fetchProductCurrentCatgoryData } from "@/store/api";
+import { fetchProductCurrentCatgoryData } from "@/store/api";
 import { Suspense } from "react";
 
 export async function generateMetadata({ params }) {
@@ -13,14 +13,14 @@ export async function generateMetadata({ params }) {
 
 const currentCategory = async ({ params, searchParams }) => {
   const paramID = params.ID && params.ID;
-  const productsFetch = await fetchProductList(paramID, searchParams.page);
+  const title = await fetchProductCurrentCatgoryData(params.ID);
+
   return (
     <>
-      page category
+      <h1>page category:{title.data.name}</h1>
       <Suspense fallback={<h2>Loading products in category...</h2>}>
-        <ProductsList />
+        <ProductsList id={paramID} pageProps={searchParams.page} />
       </Suspense>
-      {/* <CustomPagination headers={productsFetch.headers["x-wp-totalpages"]} /> */}
     </>
   );
 };

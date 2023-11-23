@@ -3,7 +3,7 @@ import Link from "next/link";
 const SingleProduct = ({ prodData }) => {
   return (
     <li>
-      <Link href={`/product/${prodData.id}`}>
+      <Link href={`/sklep/product/${prodData.id}`}>
         {/* <Image
                   src={prod.images[0].src}
                   width={300}

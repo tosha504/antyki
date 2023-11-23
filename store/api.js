@@ -65,7 +65,7 @@ export async function categoriesListNew() {
   }
 }
 
-export async function fetchProductList(currentCategory, page) {
+export async function fetchProductList(currentCategory = null, page) {
   const pageNum = !page ? 1 : page;
   let params = {
     page: pageNum,

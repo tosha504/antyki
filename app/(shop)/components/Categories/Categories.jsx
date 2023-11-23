@@ -6,7 +6,7 @@ const Categories = async ({ categoriesList }) => {
   return (
     <>
       <h3>KATEGORIE PRODUKTÓW</h3>
-      {/* <h3>{new Date().toString()}</h3> */}
+      <h3>{new Date().getTime()}</h3>
       <ul className="category-nav">
         {categoriesList.map((categoryLink) => {
           return (

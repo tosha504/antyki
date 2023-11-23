@@ -11,9 +11,14 @@ const ShopPageLayout = async ({ children }) => {
       <div className="container shop">
         <PageTitle />
         <div className="shop__filter">
-          <Categories categoriesList={categoriesList} />
+          <Suspense fallback={"custom loading ccategories"}>
+            <Categories categoriesList={categoriesList} />
+          </Suspense>
         </div>
-        <div className="shop__products">{children}</div>
+        <Suspense fallback={<h2>"custom loading for chIldren"</h2>}>
+
+          <div className="shop__products">{children}</div>
+        </Suspense>
       </div>
     </>
   );
