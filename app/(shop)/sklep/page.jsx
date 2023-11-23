@@ -1,38 +1,17 @@
-import { fetchProductList } from "../../../store/api";
 import { Suspense } from "react";
-import ProductsList from "../../components/ShopPage/ProductsList/ProductsList";
-import CustomPagination from "../../components/CustomPagination";
-// import Loading from "../../loading.jsx";
-
-import dynamic from 'next/dynamic'
-
-const ProductsListLoading = dynamic(
-  () => import('../../components/ShopPage/ProductsList/ProductsList'),
-  {
-    loading: () => <p>Loading from lazy or dynamic...</p>,
-  }
-)
+import ProductsList from "../components/ProductsList/ProductsList";
 
 export const metadata = {
   title: {
-    default: "Sklep",
+    default: "Sklep Gene",
   },
 };
 const Products = async ({ params, searchParams }) => {
-  console.log(params);
-  const productsFetch = await fetchProductList(null, searchParams.page);
-
   return (
     <>
-
-      <ProductsListLoading
-        productsFetch={productsFetch.data}
-        total={productsFetch.headers["x-wp-total"]}
-        page={searchParams.page}
-        perPage={productsFetch.config.params.per_page}
-      />
-
-      <CustomPagination headers={productsFetch.headers["x-wp-totalpages"]} />
+      <Suspense fallback={"custom loading page sklep"}>
+        <ProductsList pageProps={searchParams.page} />
+      </Suspense>
     </>
   );
 };

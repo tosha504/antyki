@@ -1,12 +1,10 @@
-
 import { revalidatePath } from "next/cache";
 export async function posts() {
   try {
     const getPosts = await fetch(
-      `https://fredommaster.pl/shop/wp-json/wp/v2/posts/79746`,
-      { cache: "force-cache" }
+      `https://fredommaster.pl/shop/wp-json/wp/v2/posts/79746`
     );
-    revalidatePath("/");
+    // revalidatePath("/");
     const getPostsJ = await getPosts.json();
 
     return getPostsJ;
@@ -17,7 +15,7 @@ export async function posts() {
 
 export default async function Home() {
   const res = await posts();
-  console.log(res);
+  // console.log(res.title.rendered);
   return (
     <>
       <div className="container">

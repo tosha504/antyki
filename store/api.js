@@ -1,4 +1,6 @@
 import axios from "axios";
+import { revalidatePath } from "next/cache";
+
 const url = process.env.WORDPRESS_BASE_URL + "/wp-json/wc/v3/products";
 const shippingUrl = "https://fredommaster.pl/shop/wp-json/wc/v3";
 const consumer_key = process.env.NEXT_APP_CONSUMER_DATA_KEY;
@@ -63,7 +65,7 @@ export async function categoriesListNew() {
   }
 }
 
-export function fetchProductList(currentCategory, page) {
+export async function fetchProductList(currentCategory, page) {
   const pageNum = !page ? 1 : page;
   let params = {
     page: pageNum,
@@ -88,7 +90,7 @@ export function fetchProductList(currentCategory, page) {
     .catch((erorr) => erorr);
 }
 
-export function fetchProductCurrentCatgoryData(currentCategory) {
+export async function fetchProductCurrentCatgoryData(currentCategory) {
   let params = {
     consumer_key: consumer_key,
     consumer_secret: consumer_secret,
@@ -140,4 +142,15 @@ export async function getProfileData(authToken) {
   } catch (error) {
     throw error;
   }
+}
+
+export async function singlePage(id) {
+  const getPosts = await fetch(
+    `https://fredommaster.pl/shop/wp-json/custom/v1/page/${id}`,
+    { cache: "force-cache" }
+  );
+  revalidatePath("/[slug]", "page");
+
+  const getPostsJa = await getPosts.json();
+  return getPostsJa;
 }

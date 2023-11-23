@@ -1,4 +1,3 @@
-
 import Header from "@/app/components/Header/Header";
 import "./index.scss";
 import { Providers } from "./components/providers/Provider";
@@ -12,15 +11,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <Providers>
         <body>
-          <Suspense fallback={<Loading />}>
-            <div className="wrapper">
-              <Header />
+          <div className="wrapper">
+            <Header />
+            <Suspense fallback={<Loading />}>
               <main>{children}</main>
-              <footer>
-                <div className="container">Footer</div>
-              </footer>
-            </div>
-          </Suspense>
+            </Suspense>
+            <footer>
+              <div className="container">Footer</div>
+            </footer>
+          </div>
           <ToastContainer />
         </body>
       </Providers>

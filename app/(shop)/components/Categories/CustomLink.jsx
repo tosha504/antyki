@@ -7,7 +7,7 @@ const CustomLink = ({ linkData }) => {
   const isActive = parseInt(linkData.term_id) === parseInt(segment[1]);
   return (
     <Link
-      href={`/categories/${linkData.term_id}`}
+      href={`/sklep/categories/${linkData.term_id}`}
       style={{ fontWeight: isActive ? "bold" : "normal" }}
     >
       {linkData.name}

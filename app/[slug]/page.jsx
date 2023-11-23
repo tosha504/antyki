@@ -1,21 +1,14 @@
-export async function singlePage(id) {
-  const getPosts = await fetch(
-    `https://fredommaster.pl/shop/wp-json/custom/v1/page/${id}`
-  );
-  const getPostsJa = await getPosts.json();
-
-  return getPostsJa;
-}
+import { singlePage } from "@/store/api";
 
 const slug = async ({ params }) => {
-  console.log(params);
   const singlPageWodpress = await singlePage(parseInt(params.slug));
-  // const content = { __html: singlPageWodpress.content }
   return (
     <>
       <div className="container">
-        <h1>{singlPageWodpress.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: singlPageWodpress.content }} />
+        <h1>{singlPageWodpress.post_title}</h1>
+        <div
+          dangerouslySetInnerHTML={{ __html: singlPageWodpress.post_content }}
+        />
       </div>
     </>
   );

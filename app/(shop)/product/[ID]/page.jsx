@@ -8,8 +8,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import "./product.scss";
-import ProductsList from "@/app/components/ShopPage/ProductsList/ProductsList";
-import AddToCArt from "@/app/components/SingleProduct/AddToCart";
+import ProductsList from "@/app/(shop)/_components/ProductsList/ProductsList";
+import AddToCArt from "@/app/(shop)/_components/SingleProduct/AddToCart";
 
 const Product = async ({ params }) => {
   const productData = await singleProductData(params.ID);

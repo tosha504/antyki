@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import "./Register.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
