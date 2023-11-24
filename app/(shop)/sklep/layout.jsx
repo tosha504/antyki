@@ -16,7 +16,6 @@ const ShopPageLayout = async ({ children }) => {
           </Suspense>
         </div>
         <Suspense fallback={<h2>"custom loading for chIldren"</h2>}>
-
           <div className="shop__products">{children}</div>
         </Suspense>
       </div>

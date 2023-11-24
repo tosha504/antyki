@@ -66,6 +66,7 @@ export async function categoriesListNew() {
 }
 
 export async function fetchProductList(currentCategory = null, page) {
+  console.log(currentCategory);
   const pageNum = !page ? 1 : page;
   let params = {
     page: pageNum,
@@ -95,14 +96,13 @@ export async function fetchProductCurrentCatgoryData(currentCategory) {
     consumer_key: consumer_key,
     consumer_secret: consumer_secret,
   };
-
   // console.log(url + "/categories/" + currentCategory, params);
   return axios
     .get(url + "/categories/" + currentCategory, {
       params,
     })
 
-    .then((res) => {
+    .then(async (res) => {
       return res;
     })
     .catch((erorr) => erorr);

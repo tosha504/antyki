@@ -7,8 +7,8 @@ import CustomPagination from "../../../components/CustomPagination";
 import dynamic from "next/dynamic";
 
 const LazyProductItem = dynamic(() => import("./SingleProduct"));
-const ProductsList = ({ paramID, pageProps }) => {
-  const productsFetch = use(fetchProductList(paramID, pageProps));
+const ProductsList = ({ id, pageProps }) => {
+  const productsFetch = use(fetchProductList(id, pageProps));
   // const _currentPage = !pageProps ? 1 : parseInt(pageProps);
   // const from = (_currentPage - 1) * parseInt(perPage) + 1;
   // const to = Math.min(
@@ -18,17 +18,15 @@ const ProductsList = ({ paramID, pageProps }) => {
   // console.log(productsFetch?.headers["x-wp-total"]);
   return (
     <>
-      <h3>{new Date().getTime()}</h3>
-      <ul className="products-list">
-        {productsFetch.data.map((prod, key) => {
-          return (
-            <Suspense key={key} fallback={`i dondasfasd fasfdasfdas fas `}>
-              <LazyProductItem prodData={prod} />
-            </Suspense>
-          )
-        })}
-      </ul>
       <CustomPagination headers={productsFetch.headers["x-wp-totalpages"]} />
+      <Suspense fallback={`i dondasfasd fasfdasfdas fas `}>
+        <h3>{new Date().getTime()}</h3>
+        <ul className="products-list">
+          {productsFetch.data.map((prod, key) => {
+            return <LazyProductItem key={key} prodData={prod} />;
+          })}
+        </ul>
+      </Suspense>
     </>
   );
 };

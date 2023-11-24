@@ -14,13 +14,12 @@ export async function generateMetadata({ params }) {
 const currentCategory = async ({ params, searchParams }) => {
   const paramID = params.ID && params.ID;
   const title = await fetchProductCurrentCatgoryData(params.ID);
-
   return (
     <>
       <h1>page category:{title.data.name}</h1>
-      <Suspense fallback={<h2>Loading products in category...</h2>}>
-        <ProductsList id={paramID} pageProps={searchParams.page} />
-      </Suspense>
+      {/* <Suspense fallback={<h2>Loading products in category...</h2>}> */}
+      <ProductsList id={paramID} pageProps={searchParams.page} />
+      {/* </Suspense> */}
     </>
   );
 };
